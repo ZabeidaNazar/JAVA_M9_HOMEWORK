@@ -116,9 +116,5 @@ public class TestMyStack {
         testRemoveElements();
         testClearElements();
         testArraySize();
-
-        MyStack<String> stack = new MyStack<>();
-        stack.push("hello");
-        stack.remove(1);
     }
 }
