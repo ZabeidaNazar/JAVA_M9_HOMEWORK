@@ -28,9 +28,7 @@ public class MyArrayList<E> {
     }
 
     public void remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("Некоректний індекс - " + index + " для масиву розміром " + size);
-        }
+        checkIndex(index);
         System.arraycopy(elements, index + 1, elements, index, size - index - 1);
         size--;
     }
@@ -47,15 +45,19 @@ public class MyArrayList<E> {
     }
 
     public E get(int index) {
-        if (index < 0 || index >= size()) {
-            throw new IllegalArgumentException("Некоректний індекс - " + index + " для масиву розміром " + size);
-        }
+        checkIndex(index);
         return (E) elements[index];
     }
 
     private void checkResize() {
         if (size == elements.length) {
             elements = Arrays.copyOf(elements, size + 5);
+        }
+    }
+
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Некоректний індекс - " + index + " для масиву розміром " + size);
         }
     }
 }

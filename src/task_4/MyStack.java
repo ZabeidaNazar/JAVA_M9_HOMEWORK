@@ -53,15 +53,11 @@ public class MyStack<E> {
         return size;
     }
     public E peek() {
-        if (size == 0) {
-            throw new EmptyStackException();
-        }
+        checkSize();
         return last.element;
     }
     public E pop() {
-        if (size == 0) {
-            throw new EmptyStackException();
-        }
+        checkSize();
 
         Node<E> nodeToDel = last;
 
@@ -73,6 +69,12 @@ public class MyStack<E> {
 
         size--;
         return nodeToDel.element;
+    }
+
+    private void checkSize() {
+        if (size == 0) {
+            throw new EmptyStackException();
+        }
     }
 
     private static class Node<E> {
